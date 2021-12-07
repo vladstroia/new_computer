@@ -69,8 +69,31 @@ git push
 #make tmux prompt colored
 echo "set -g default-terminal 'xterm-256color'" >> ~/.tmux.conf
 
+# create github ssh key
+ssh-keygen -t ed25519 -C "vlad.stroia@gmail.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+echo "Add the SSH key to your account on GitHub."
+ git config --global user.email "vlad.stroia@gmail.com"
+ git config --global user.name "vladstroia"
+
+
+ 
+
+
+
+
+
+
+
 # update ubuntu
 sudo apt-get update && time sudo apt-get dist-upgrade
+
+#install git and tmux
+sudo apt install -y tmux git
+
+
+
 
 # install docker
   sudo apt-get install \
@@ -85,3 +108,6 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+
+# docker install finished
+
