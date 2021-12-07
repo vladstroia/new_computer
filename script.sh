@@ -90,8 +90,27 @@ echo "Add the SSH key to your account on GitHub."
 sudo apt-get update && time sudo apt-get dist-upgrade
 
 #install git and tmux
-sudo apt install -y tmux git
+sudo apt install -y tmux git neovim
 
+#install vim-plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+echo "
+call plug#begin('~/.vim/plugged')
+
+Plug 'preservim/nerdcommenter'
+
+
+call plug#end()
+
+let mapleader=","
+
+set number relativenumber
+
+">> ~/. config/nvim/init
+
+# run pluginstall to install vim packages
+nvim --headless +PlugInstall +qall
 
 
 
